@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gitnews3/views/homeview.dart';
 
 void main() {
   runApp(const gitnews3());
@@ -10,6 +11,9 @@ class gitnews3 extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeView(),
+    );
   }
 }
