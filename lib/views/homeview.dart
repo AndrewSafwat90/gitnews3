@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gitnews3/widgets/categorieslistview.dart';
 import 'package:gitnews3/widgets/categorycard.dart';
 
 class HomeView extends StatelessWidget {
@@ -31,6 +32,6 @@ class HomeView extends StatelessWidget {
             ),
           ),
         ),
-        body: CategoryCard());
+        body: Categorieslistview());
   }
 }
