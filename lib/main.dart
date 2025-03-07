@@ -1,7 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:gitnews3/services/newsService.dart';
 import 'package:gitnews3/views/homeview.dart';
 
 void main() {
+  NewsService().getHttp();
   runApp(const gitnews3());
 }
 
