@@ -4,7 +4,7 @@ import 'package:gitnews3/services/newsService.dart';
 import 'package:gitnews3/views/homeview.dart';
 
 void main() {
-  NewsService().getHttp();
+  NewsService().getNews();
   runApp(const gitnews3());
 }
 
