@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gitnews3/widgets/categorieslistview.dart';
 import 'package:gitnews3/widgets/categorycard.dart';
 import 'package:gitnews3/widgets/newslistview.dart';
+import 'package:gitnews3/widgets/newslistviewbuilder.dart';
 import 'package:gitnews3/widgets/newstile.dart';
 
 class HomeView extends StatelessWidget {
@@ -43,7 +44,7 @@ class HomeView extends StatelessWidget {
                   child: SizedBox(
                 height: 30,
               )),
-              NewsListView(),
+              NewsListViewBuilder(),
             ],
           ),
         ));
