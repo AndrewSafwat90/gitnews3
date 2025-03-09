@@ -4,43 +4,54 @@ import 'package:gitnews3/services/newsService.dart';
 import 'package:gitnews3/widgets/newslistview.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
-  const NewsListViewBuilder({
-    super.key,
-  });
+  const NewsListViewBuilder({super.key});
 
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
 }
 
 class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
-  bool isLoading = true;
-  List<ArticleModel> articles = [];
+  var future;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getGeneralNews();
-  }
-
-  Future<void> getGeneralNews() async {
-    articles = await NewsService().getNews();
-    isLoading = false;
-    setState(() {});
+    future = NewsService().getNews();
   }
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? SliverFillRemaining(
+    return FutureBuilder<List<ArticleModel>>(
+      future: future,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return NewsListView(articles: snapshot.data!);
+        } else if (snapshot.hasError) {
+          return SliverFillRemaining(
+              child: Center(
+            child: Text('No data 😥'),
+          ));
+        } else {
+          return SliverFillRemaining(
             child: Center(
               child: CircularProgressIndicator(),
             ),
-          )
-        : articles.isNotEmpty
-            ? NewsListView(articles: articles)
-            : SliverFillRemaining(
-                child: Center(
-                child: Text('No data 😥'),
-              ));
+          );
+        }
+      },
+    );
+
+    // return isLoading
+    //     ? SliverFillRemaining(
+    //         child: Center(
+    //           child: CircularProgressIndicator(),
+    //         ),
+    //       )
+    //     : articles.isNotEmpty
+    //         ? NewsListView(articles: articles)
+    //         : SliverFillRemaining(
+    //             child: Center(
+    //             child: Text('No data 😥'),
+    //           ));
   }
 }
