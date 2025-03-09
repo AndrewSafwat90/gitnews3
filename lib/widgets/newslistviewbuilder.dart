@@ -36,6 +36,11 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
               child: CircularProgressIndicator(),
             ),
           )
-        : NewsListView(articles: articles);
+        : articles.isNotEmpty
+            ? NewsListView(articles: articles)
+            : SliverFillRemaining(
+                child: Center(
+                child: Text('No data 😥'),
+              ));
   }
 }
