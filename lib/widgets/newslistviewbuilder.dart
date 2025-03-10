@@ -16,7 +16,7 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    future = NewsService().getNews();
+    future = NewsService().getNews(category: 'general');
   }
 
   @override

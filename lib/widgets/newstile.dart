@@ -15,6 +15,7 @@ class NewsTile extends StatelessWidget {
                   articlemodel.image!,
                   height: 200,
                   width: double.infinity,
+                  fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
                       height: 200,
@@ -31,7 +32,6 @@ class NewsTile extends StatelessWidget {
                       )),
                     );
                   },
-                  fit: BoxFit.cover,
                 )
               : Container(
                   height: 200,
