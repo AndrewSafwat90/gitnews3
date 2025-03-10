@@ -36,10 +36,13 @@ class NewsTile extends StatelessWidget {
               : Container(
                   height: 200,
                   width: double.infinity,
-                  color: Colors.grey,
-                  child: Center(
-                    child: Image.network(
-                        'https://wallpapers.com/images/high/breaking-news-background-1500-x-946-ptptftteduff9krr.webp'),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        'https://wallpapers.com/images/high/breaking-news-background-1500-x-946-ptptftteduff9krr.webp',
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
         ),

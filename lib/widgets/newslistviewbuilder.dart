@@ -4,19 +4,20 @@ import 'package:gitnews3/services/newsService.dart';
 import 'package:gitnews3/widgets/newslistview.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
-  const NewsListViewBuilder({super.key});
-
+  const NewsListViewBuilder({super.key, required this.category});
+  final String category;
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
 }
 
 class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
   var future;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    future = NewsService().getNews(category: 'general');
+    future = NewsService().getNews(category: widget.category);
   }
 
   @override
