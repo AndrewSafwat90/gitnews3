@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:gitnews3/models/articlemodel.dart';
+import 'package:gitnews3/services/newsService.dart';
 import 'package:gitnews3/widgets/categorieslistview.dart';
 
 import 'package:gitnews3/widgets/newslistviewbuilder.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  String category = 'general'; // Track current category
+  int refreshTrigger = 0;
+
+  void _refreshPage() {
+    setState(() {
+      refreshTrigger++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(onPressed: _refreshPage, icon: Icon(Icons.refresh))
+          ],
           centerTitle: true,
           title: RichText(
             text: const TextSpan(
@@ -44,6 +63,7 @@ class HomeView extends StatelessWidget {
               )),
               NewsListViewBuilder(
                 category: 'general',
+                key: ValueKey(refreshTrigger),
               ),
             ],
           ),
